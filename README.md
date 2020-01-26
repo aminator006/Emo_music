@@ -1,6 +1,9 @@
-# Emosic
-Emosic – Get music at your face tips : Generations of music playlist based on face
-expressions using webcam.<br>
-• Python, JavaScript, Django Framework, Machine learning, OpenCV, front-end technologies.<br>
-• Train model using LBPH face recognizer on FER2013 dataset.<br>
-• Got accuracy of 76%(approx.) for four emotions. (anger, happy, sad and neutral)
+# Emo_music
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/aminator006/Emo_music)
+### Description
+Emotional Based Music Player that uses your face expression to generate music playlist. 
+### Features
+- Train model using LBPH face recognizer on FER2013 dataset.
+- Got accuracy of 74%.
+
+
