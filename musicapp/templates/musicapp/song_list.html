@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}>
+    {% for ob in object_list %}
+    <h1>{{ob.name}}</h1>
+      <audio controls>
+
+           <source src="{{ ob.audio_file.url }}" type="audio/mpeg">
+        </audio>
+    {% endfor %}
+
+{% endblock %}

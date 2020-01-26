@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+
+<h1 style="color:#fff;text-align:center;font-size:64px;font-family:Broadway;text-shadow: 2px 2px 4px #000000;">EMOSIC</h1>
+<h4 style="color:#fff;text-align:center;position:relative;text-shadow: 2px 2px 4px #000000;">Get Songs at your Face Tips</h4>
+</br>
+<div class="container login1">
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="Login" class="btn btn-default">
+        <h4>New user!! <a href="{% url 'accounts:signup' %}" style="color:#61DF2A;text-shadow: 2px 2px 4px #000000;">Click here</a> to create your account</h4>
+    </form>
+</div>
+{% endblock %}

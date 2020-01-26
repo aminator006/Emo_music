@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block userProfileBlock %}
+  <span style="font-size:16px;cursor:pointer;position:relative;color:#fff;text-shadow: 2px 2px 4px #000000;margin-top:15px;float:right;" onclick="openNav()"><i class="fa fa-user"  style="color:#fff;text-shadow: 2px 2px 4px #000000;" aria-hidden="true"></i> User Profile</span>
+{% endblock %}
+
+{% block content %}
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <h2 style="text-align:center;color:#D9E2D5;">User Profile</h2>
+  <!--profile box-->
+  <div class="card">
+      {% if flag %}
+      <img src="{{allprophoto.profilephoto.url}}" alt="" style="height:150px;width:150px;border-radius:50%;">
+      {% else %}
+      <a href="{% url 'accounts:proPic' %}"><img src="/static/images/uploadphoto.png" alt="" style="height:150px;width:150px;border-radius:50%;"></a>
+      {% endif %}
+      <h1 style="color:#EAEFE8;">{{user.username}}</h1>
+      <p class="title">EMAIL id</p>
+      <div style="margin: 24px 0;">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+  </div>
+</div>
+ <!--end profile box-->
+</div>
+
+<!--side nav ends---->
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-6">
+    {% if emotionFoundtag %}
+     <center><h2 style="display:inline;color:#E3EEDF;text-shadow: 2px 2px 4px #000000;">Hey!! Your are :</h2> 
+   <img src="/static/emosis/{{emotionFoundtag}}.png" alt="" style="position:relative;display:inline;height:60px;width:60px;"></center>
+   {% endif %}
+ </br>
+ <h3 style="color:#E3EEDF;text-shadow: 2px 2px 4px #000000;">Here are the TOP SONGS for you. Enjoy!!</h3>
+ <strong><hr style="color:#787C77;"></strong>
+ </br>
+
+  {% if songlist %}
+  {% for ob in songlist %}
+
+  {% if ob.emotionAttached == emotionFoundtag %}
+
+    <audio controls style="position:relative;display:inline;margin-right:5px;border-radius:3px;background-color:#737970;">
+         <source src="{{ ob.audio_file.url }}" type="audio/mpeg">
+    </audio>
+    <h4 style="position:relative;color:#E3EEDF;text-shadow: 2px 2px 4px #000000;display:inline;">{{ob.name}}</h4>
+  <hr style="color:#A4A9A3;">
+  {% endif %}
+  {% endfor %}
+</div><!--end col1-->
+
+<!--col2-->
+<div class="col-sm-6" style="padding-top:61px;">
+</br>
+  <center><h3 style="position:relative;color:#E3EEDF;text-shadow: 2px 2px 4px #000000;">Some popular social platforms</h3></center>
+  <hr style="color:#A4A9A3;">
+  <div class="container-fluid">
+    <center><a style="position:relative;" class="social1" href="https://www.youtube.com/results?search_query={{emotionFoundtag}}+songs"><button type="button" name="button"><img src="/static/images/youtube1_logo.png" style="width:100px;height:100px;"></button></a></center>
+    <center><center><h2 style="position:relative;color:#E3EEDF;text-shadow: 2px 2px 4px #000000;">-OR-</h2></center>
+    <center><a style="position:relative;" class="social1" href="https://gaana.com/search/{{emotionFoundtag}}%20songs"><button type="button" name="button"><img src="/static/images/ganna.com_logo.png" style="width:100px;height:100px;border-radius:5px;"></button></a></center>
+  {% endif %}
+</div>
+</div><!--end col2-->
+</div>
+  <script>
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "100%";
+  }
+
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+  }
+  </script>
+
+{% endblock %}
